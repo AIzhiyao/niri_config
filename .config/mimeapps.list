@@ -1,0 +1,104 @@
+
+[Default Applications]
+x-scheme-handler/clash=mihomo-party.desktop
+x-scheme-handler/clash-verge=clash-verge.desktop;
+x-scheme-handler/mihomo=mihomo-party.desktop
+
+# 自定义
+#pdf文件
+application/pdf=org.gnome.Papers.desktop
+
+# 文件查看器
+inode/directory=yazi-fileview.desktop
+application/x-directory=yazi-fileview.desktop
+
+
+# 视频文件
+video/mp4=mpv.desktop
+video/x-matroska=mpv.desktop
+video/quicktime=mpv.desktop
+video/x-msvideo=mpv.desktop
+video/webm=mpv.desktop
+video/ogg=mpv.desktop
+video/mpeg=mpv.desktop
+video/x-ms-wmv=mpv.desktop
+video/x-flv=mpv.desktop
+video/x-m4v=mpv.desktop
+video/3gpp=mpv.desktop
+video/x-ms-asf=mpv.desktop
+
+# 音频文件
+audio/mpeg=mpv.desktop
+audio/flac=mpv.desktop
+audio/ogg=mpv.desktop
+audio/x-wav=mpv.desktop
+audio/x-m4a=mpv.desktop
+audio/x-ms-wma=mpv.desktop
+audio/aac=mpv.desktop
+audio/webm=mpv.desktop
+
+# 图片文件
+image/png=org.gnome.Loupe.desktop
+image/jpeg=org.gnome.Loupe.desktop
+image/webp=org.gnome.Loupe.desktop
+image/gif=org.gnome.Loupe.desktop
+image/svg+xml=org.gnome.Loupe.desktop
+
+# 网页相关文件
+text/css=code.desktop
+text/x-scss=code.desktop
+text/x-less=code.desktop
+text/x-sass=code.desktop
+application/javascript=code.desktop
+text/javascript=code.desktop
+application/x-javascript=code.desktop
+text/x-typescript=code.desktop
+text/x-vue=code.desktop
+text/html=code.desktop
+
+# 编程语言文件
+text/x-python=code.desktop
+text/x-java=code.desktop
+text/x-c=code.desktop
+text/x-c++=code.desktop
+text/x-chdr=code.desktop
+text/x-c++hdr=code.desktop
+text/x-rust=code.desktop
+text/x-go=code.desktop
+text/x-php=code.desktop
+text/x-ruby=code.desktop
+text/x-swift=code.desktop
+text/x-kotlin=code.desktop
+
+# 配置文件
+application/json=code.desktop
+application/x-yaml=code.desktop
+text/yaml=code.desktop
+text/x-yaml=code.desktop
+application/toml=code.desktop
+text/x-ini=code.desktop
+text/x-properties=code.desktop
+application/x-desktop=code.desktop
+
+# 文档文件
+text/plain=code.desktop
+text/markdown=code.desktop
+text/x-rst=code.desktop
+text/x-tex=code.desktop
+application/x-tex=code.desktop
+
+# XML 文件
+application/xml=code.desktop
+text/xml=code.desktop
+
+# Shell 脚本
+application/x-shellscript=code.desktop
+text/x-shellscript=code.desktop
+
+# 其他文本格式
+text/csv=code.desktop
+text/x-sql=code.desktop
+text/x-log=code.desktop
+
+# 通用文本类型（备用）
+text/*=code.desktop

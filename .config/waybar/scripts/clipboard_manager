@@ -1,0 +1,230 @@
+#!/bin/bash
+
+HIST_FILE="$HOME/.cache/clipboard_history.txt"
+MAX_ENTRIES=500
+TEMP_FILE="/tmp/fuzzel_clipboard_$$"
+
+# 清理函数
+cleanup() {
+    rm -f "$TEMP_FILE" "/tmp/clipboard_selected_$$"
+}
+
+# 添加内容到历史
+add_to_history() {
+    local content="$1"
+    
+    if [[ -z "$content" ]] || [[ "$content" == "剪切板历史为空" ]]; then
+        return
+    fi
+    
+    # 移除换行符和特殊字符
+    content=$(echo "$content" | tr '\n' ' ' | sed 's/\t/ /g' | sed 's/  */ /g')
+    
+    # 检查是否已存在
+    if grep -Fxq "$content" "$HIST_FILE" 2>/dev/null; then
+        # 如果已存在，移动到最前面
+        grep -vFx "$content" "$HIST_FILE" 2>/dev/null > "$HIST_FILE.tmp"
+        echo "$content" > "$HIST_FILE"
+        cat "$HIST_FILE.tmp" >> "$HIST_FILE"
+        rm -f "$HIST_FILE.tmp"
+    else
+        # 添加新内容到开头
+        echo "$content" > "$HIST_FILE.tmp"
+        cat "$HIST_FILE" 2>/dev/null >> "$HIST_FILE.tmp"
+        
+        # 限制条目数量
+        head -n $MAX_ENTRIES "$HIST_FILE.tmp" > "$HIST_FILE"
+        rm -f "$HIST_FILE.tmp"
+    fi
+}
+
+# 显示历史
+show_history() {
+    if [[ ! -f "$HIST_FILE" ]] || [[ ! -s "$HIST_FILE" ]]; then
+        echo "剪切板历史为空" | wl-copy
+        notify-send "剪切板" "历史为空" -t 1500
+        return 1
+    fi
+    
+    # 读取历史文件
+    local items=()
+    local count=0
+    
+    while IFS= read -r line; do
+        items+=("$line")
+        ((count++))
+    done < "$HIST_FILE"
+    
+    # 创建显示格式：序号 + 内容预览
+    local display=""
+    for ((i=0; i<count; i++)); do
+        local preview="${items[$i]}"
+        if [[ ${#preview} -gt 60 ]]; then
+            preview="${preview:0:57}..."
+        fi
+        display+="$((i+1)). $preview\n"
+    done
+    
+    # 使用 Fuzzel 选择
+    local selected
+    selected=$(echo -e "$display" | fuzzel --dmenu --prompt " Clipboard" --lines 10 --width 70)
+    
+    if [[ -n "$selected" ]]; then
+        # 提取序号
+        local index=$(echo "$selected" | grep -o '^[0-9]*' | head -1)
+        if [[ -n "$index" ]]; then
+            ((index--))  # 转为0-based索引
+            
+            if [[ $index -ge 0 ]] && [[ $index -lt $count ]]; then
+                echo "${items[$index]}" > "/tmp/clipboard_selected_$$"
+                return 0
+            fi
+        fi
+    fi
+    
+    return 1
+}
+
+# 显示操作菜单
+show_action_menu() {
+    local content="$1"
+    local preview="${content:0:50}"
+    if [[ ${#content} -gt 50 ]]; then
+        preview="$preview..."
+    fi
+    
+    local action=$(echo -e "复制\n删除\n查看\n清空历史" | \
+        fuzzel --dmenu --prompt "操作 [$preview]: " --lines 4 --width 50)
+    
+    echo "$action"
+}
+
+# 监控剪切板
+monitor() {
+    local last_content=""
+    
+    while true; do
+        local current_content
+        current_content=$(wl-paste -t text 2>/dev/null || echo "")
+        
+        if [[ -n "$current_content" ]] && [[ "$current_content" != "$last_content" ]]; then
+            add_to_history "$current_content"
+            last_content="$current_content"
+        fi
+        
+        sleep 10
+    done
+}
+
+# 主程序
+main() {
+    trap cleanup EXIT INT TERM
+    
+    case "$1" in
+        "-a"|"--add")
+            local content
+            content=$(wl-paste -t text 2>/dev/null || echo "")
+            add_to_history "$content"
+            ;;
+            
+        "-s"|"--show")
+            # 先添加当前内容
+            local current_content
+            current_content=$(wl-paste -t text 2>/dev/null || echo "")
+            add_to_history "$current_content"
+            
+            # 显示历史选择
+            if show_history; then
+                local selected_content=$(cat "/tmp/clipboard_selected_$$")
+                
+                # 显示操作菜单
+                local action=$(show_action_menu "$selected_content")
+                
+                case "$action" in
+                    *复制*)
+                        echo -n "$selected_content" | wl-copy
+                        notify-send "剪切板" "已复制" -t 1500
+                        ;;
+                    *删除*)
+                        # 从历史中删除
+                        grep -vFx "$selected_content" "$HIST_FILE" > "$HIST_FILE.tmp"
+                        mv "$HIST_FILE.tmp" "$HIST_FILE"
+                        notify-send "剪切板" "已删除" -t 1500
+                        ;;
+                    *查看*)
+                        echo "$selected_content" | fuzzel --dmenu --prompt "内容: " --lines 15 --width 80
+                        ;;
+                    *清空*)
+                        echo -n "" > "$HIST_FILE"
+                        notify-send "剪切板" "历史已清空" -t 1500
+                        ;;
+                esac
+            fi
+            ;;
+            
+        "-c"|"--copy")
+            if show_history; then
+                local selected_content=$(cat "/tmp/clipboard_selected_$$")
+                echo -n "$selected_content" | wl-copy
+                notify-send "剪切板" "已复制" -t 1500
+            fi
+            ;;
+            
+        "-d"|"--delete")
+            if show_history; then
+                local selected_content=$(cat "/tmp/clipboard_selected_$$")
+                grep -vFx "$selected_content" "$HIST_FILE" > "$HIST_FILE.tmp"
+                mv "$HIST_FILE.tmp" "$HIST_FILE"
+                notify-send "剪切板" "已删除" -t 1500
+            fi
+            ;;
+            
+        "-m"|"--monitor")
+            monitor
+            ;;
+            
+        "-C"|"--clear")
+            echo -n "" > "$HIST_FILE"
+            notify-send "剪切板" "历史已清空" -t 1500
+            ;;
+            
+        "-h"|"--help")
+            echo "剪切板管理器 v1.0"
+            echo "用法: $0 [选项]"
+            echo ""
+            echo "选项:"
+            echo "  -a, --add      添加当前剪切板内容"
+            echo "  -s, --show     显示历史并操作（默认）"
+            echo "  -c, --copy     从历史复制"
+            echo "  -d, --delete   从历史删除"
+            echo "  -m, --monitor  监控剪切板变化"
+            echo "  -C, --clear    清空历史"
+            echo "  -h, --help     显示帮助"
+            echo ""
+            echo "示例:"
+            echo "  $0              # 显示剪切板历史"
+            echo "  $0 -a          # 添加当前内容到历史"
+            echo "  $0 -c          # 从历史复制"
+            ;;
+            
+        *)
+            # 默认显示历史
+            "$0" --show
+            ;;
+    esac
+    
+    cleanup
+}
+
+# 确保必要工具存在
+if ! command -v fuzzel >/dev/null 2>&1; then
+    echo "错误: 需要安装 fuzzel"
+    exit 1
+fi
+
+if ! command -v wl-copy >/dev/null 2>&1; then
+    echo "错误: 需要安装 wl-clipboard"
+    exit 1
+fi
+
+main "$@"

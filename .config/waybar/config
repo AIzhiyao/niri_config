@@ -1,0 +1,27 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 52,
+  "margin": "0 0 0 0",
+  "modules-left": [
+    "custom/system",
+    "custom/separator",
+    "bluetooth",
+    "custom/usb",
+    "custom/clipboard",
+    "niri/workspaces", 
+    "tray"
+  ],
+  "modules-center": ["clock"],
+  "modules-right": [
+    "temperature",
+    "cpu",
+    "power-profiles-daemon",
+    "memory",
+    "network",
+    "pulseaudio",
+    "group/powermenu"
+  ],
+
+  "include": ["~/.config/waybar/modules.json"]
+}

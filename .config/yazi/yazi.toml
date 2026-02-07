@@ -1,0 +1,55 @@
+# ~/.config/yazi/yazi.toml
+[mgr]
+ratio = [2, 3, 4]
+
+#*************文件打开方式*************#
+[opener]
+# 1. 定义打开器（工具库）
+# 不打开文件的虚拟操作
+no_open = [
+    { 
+        run = "notify-send -a 'Yazi' -i 'dialog-warning' '🚫二进制文件警告' '文件: %s'", 
+        block = false, 
+        desc = "mako通知：二进制文件警告" 
+    }
+]
+
+# 系统默认
+xdg-open = [
+    { run = "xdg-open %s", desc = "用系统默认应用打开" }
+]
+
+# 2. 定义打开规则（哪个文件用哪个工具）
+[open]
+rules = [
+    # ========== 明确禁止打开的二进制文件类型 ==========
+    # 备份文件
+    { url = "*.backup", use = "no_open" },
+    { url = "*.bak", use = "no_open" },
+    
+    # 可执行文件
+    { url = "*.exe", use = "no_open" },
+    { url = "*.app", use = "no_open" },
+    
+    # 系统二进制文件
+    { url = "*.bin", use = "no_open" },
+    { url = "*.so", use = "no_open" },
+    { url = "*.dll", use = "no_open" },
+    { url = "*.ko", use = "no_open" },
+    
+    # 虚拟磁盘/镜像
+    { url = "*.iso", use = "no_open" },
+    { url = "*.img", use = "no_open" },
+    { url = "*.vmdk", use = "no_open" },
+    
+    # 压缩的安装包
+    { url = "*.AppImage", use = "no_open" },
+    { url = "*.deb", use = "no_open" },
+    { url = "*.rpm", use = "no_open" },
+    
+    # 通用二进制/数据文件
+    { url = "*.dat", use = "no_open" },
+
+    { mime = "*", use = "xdg-open" },
+] 
+
