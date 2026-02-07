@@ -1,0 +1,15 @@
+# 网络管理: networkmanager的 nmltui
+# 文件管理器: yazi
+# 门户:xdg-portal-termfilechooser
+# 终端模拟器: kitty
+# 蓝牙管理: bluetui
+# 音频管理:ncpamixer、alsa
+# cpu模式控制: power-profiles-daemon
+# 锁屏 swaylock + swayidel
+# 壁纸 swaybg + awww
+# waybar mako fuzzel
+# 输入法: fcitx5 + rime
+# 游戏: steam 关闭硬件加速
+# locale.gen中消除中文、英文注释
+# 系统环境变量为空、其他环境变量放在~/.config/niri/config.kdl
+# /etc/locale.conf为英文
