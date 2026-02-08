@@ -176,6 +176,7 @@ window#waybar {
 
 /*U盘模块*/
 #custom-usb {
+    color: #ffffff;
     border-radius: 0 10px 10px 0;
     margin-right: 10px;
 }
