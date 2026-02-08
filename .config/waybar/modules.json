@@ -169,7 +169,7 @@
       "format": "{icon}",
       "format-icons": {
           "mounted": "󰕓",
-          "unmounted": "󰕓",
+          "power-off": "󰕓",
           "none": "󰕓"
       },
       "on-click": "~/.config/waybar/scripts/waybar-usb-click.sh open",

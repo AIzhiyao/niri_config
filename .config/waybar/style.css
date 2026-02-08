@@ -171,7 +171,7 @@ window#waybar {
     color: #ffffff;
 }
 #custom-clipboard:hover {
-    color: #ffb980;
+    color: #ace0ff
 }
 
 /*U盘模块*/
@@ -182,11 +182,11 @@ window#waybar {
 }
 /* 有 USB 已挂载 */
 #custom-usb.mounted {
-    color: #68fd7c;
-}
-/* 有 USB 未挂载 */
-#custom-usb.unmounted {
     color: #a2a2ff;
+}
+/* 卸载断电 */
+#custom-usb.power-off {
+    color: #b8b8b8;
 }
 /* 无 USB 设备 */
 #custom-usb.none {
