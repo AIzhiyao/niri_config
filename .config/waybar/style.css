@@ -169,8 +169,6 @@ window#waybar {
 /*剪切板功能*/
 #custom-clipboard {
     color: #ffffff;
-    border-radius: 0 10px 10px 0;
-    margin-right: 10px;
 }
 #custom-clipboard:hover {
     color: #ffb980;
@@ -178,11 +176,12 @@ window#waybar {
 
 /*U盘模块*/
 #custom-usb {
-    color: #ffffff;
+    border-radius: 0 10px 10px 0;
+    margin-right: 10px;
 }
 /* 有 USB 已挂载 */
 #custom-usb.mounted {
-    color: #90ffb5;
+    color: #68fd7c;
 }
 /* 有 USB 未挂载 */
 #custom-usb.unmounted {
@@ -193,7 +192,7 @@ window#waybar {
     color: #ffffff;
 }
 #custom-usb:hover {
-    color: #52a4e7;
+    color: #ace0ff;
 }
 
 /*分隔符*/
@@ -207,7 +206,6 @@ window#waybar {
 #custom-system {
     padding: 5px 15px 5px 10px;
     border-radius: 10px 0 0 10px;
-    /* margin-right: 10px; */
     margin-left: 10px;
     color: #ffffff;
 }

@@ -305,9 +305,9 @@ layout {
 
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 // spawn-at-startup "fcitx5" "-d"
-// spawn-at-startup "udiskie"
+// 每当 U 盘状态变动，udiskie 就会执行 pkill 给 Waybar 发信号
+spawn-sh-at-startup "udiskie --event-hook 'pkill -RTMIN+8 waybar' 2>/dev/null"
 spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
-spawn-at-startup "~/.config/waybar/scripts/clipboard_manager" "--monitor"
 
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:

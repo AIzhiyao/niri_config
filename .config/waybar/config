@@ -7,8 +7,8 @@
     "custom/system",
     "custom/separator",
     "bluetooth",
-    "custom/usb",
     "custom/clipboard",
+    "custom/usb",
     "niri/workspaces", 
     "tray"
   ],

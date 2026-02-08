@@ -165,11 +165,11 @@
   "custom/usb": {
       "exec": "~/.config/waybar/scripts/waybar-usb.sh",
       "return-type": "json",
-      "interval": 5,
+      "signal": 8,
       "format": "{icon}",
       "format-icons": {
-          "mounted": "󰐷",
-          "unmounted": "󰙄",
+          "mounted": "󰕓",
+          "unmounted": "󰕓",
           "none": "󰕓"
       },
       "on-click": "~/.config/waybar/scripts/waybar-usb-click.sh open",
@@ -180,7 +180,7 @@
     "tooltip": false
   },
   "custom/clipboard": {
-    "format": "󰆒",
+    "format": "󰅌",
     "tooltip": false,
     "on-click": "cliphist list | fuzzel -d | cliphist decode | wl-copy"
   }
