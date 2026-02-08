@@ -1,41 +1,19 @@
 #!/bin/bash
 
-ACTION="$1"  # "open" 或 "unmount"
+ACTION="$1"
 
 # 方法1：检测可移动设备（RM=1）
 detect_method_1() {
-    lsblk -J -o NAME,TYPE,MOUNTPOINT,RM 2>/dev/null | \
-        jq -r '.blockdevices[] | select(.rm == true and .type == "part") | {name: .name, mountpoint: .mountpoint}' 2>/dev/null | \
-        jq -s '.[0]' 2>/dev/null
+    # 逻辑：递归查找所有 blockdevices，匹配 rm=true 且 type=part 的分区
+    # 并根据大小排序，取最大的那个分区（防止显示 Ventoy 的 EFI 小分区）
+    lsblk -J -o NAME,TYPE,MOUNTPOINT,SIZE,LABEL,RM 2>/dev/null | \
+        jq -r '.. | objects | select(.rm == true and .type == "part")' 2>/dev/null | \
+        jq -s 'sort_by(.size) | reverse | .[0]' 2>/dev/null
 }
 
-# 方法2：检测 /dev/sd* 设备（排除主硬盘）
+# 方法2：检查已挂载的设备
 detect_method_2() {
-    root_disk=$(lsblk -no PKNAME $(findmnt -n -o SOURCE /) 2>/dev/null)
-    
-    for dev in /sys/block/sd*; do
-        [ -e "$dev" ] || continue
-        devname=$(basename "$dev")
-        
-        [ "$devname" = "$root_disk" ] && continue
-        
-        if [ -f "$dev/removable" ] && [ "$(cat $dev/removable)" = "1" ]; then
-            for part in /sys/block/$devname/${devname}*; do
-                [ -e "$part" ] || continue
-                partname=$(basename "$part")
-                mountpoint=$(lsblk -no MOUNTPOINT /dev/$partname 2>/dev/null)
-                
-                echo "{\"name\":\"$partname\",\"mountpoint\":\"$mountpoint\"}"
-                return
-            done
-        fi
-    done
-    echo "null"
-}
-
-# 方法3：检查已挂载的设备
-detect_method_3() {
-    for mount_base in /media /run/media; do
+    for mount_base in /run/media; do
         if [ -d "$mount_base" ]; then
             for userdir in "$mount_base"/*; do
                 [ -d "$userdir" ] || continue
@@ -60,10 +38,6 @@ usb_info=$(detect_method_1)
 
 if [ -z "$usb_info" ] || [ "$usb_info" = "null" ]; then
     usb_info=$(detect_method_2)
-fi
-
-if [ -z "$usb_info" ] || [ "$usb_info" = "null" ]; then
-    usb_info=$(detect_method_3)
 fi
 
 if [ -z "$usb_info" ] || [ "$usb_info" = "null" ]; then
