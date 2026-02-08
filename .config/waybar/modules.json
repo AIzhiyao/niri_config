@@ -182,6 +182,6 @@
   "custom/clipboard": {
     "format": "󰆒",
     "tooltip": false,
-    "on-click": "~/.config/waybar/scripts/clipboard_manager"
+    "on-click": "cliphist list | fuzzel -d | cliphist decode | wl-copy"
   }
 }
