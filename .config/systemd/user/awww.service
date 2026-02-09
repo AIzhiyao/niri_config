@@ -5,5 +5,5 @@ Requisite=graphical-session.target
 
 [Service]
 ExecStart=/usr/bin/awww-daemon
-; ExecStartPost=/bin/sleep 0.5 && /usr/bin/awww img /home/YOU/Pictures/OverView/OverView_blur_1.jpg
+; ExecStartPost=/bin/sleep 0.5 && /usr/bin/awww img /home/ai/Pictures/OverView/overview_blur_1.png
 Restart=on-failure

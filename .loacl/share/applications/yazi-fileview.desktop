@@ -1,0 +1,11 @@
+[Desktop Entry]
+Comment=Open directories with Yazi terminal file manager
+Exec=kitty --class yazi yazi %F
+Icon=yazi
+Terminal=false  # 关键：设置为false
+Type=Application
+Categories=System;FileManager;
+MimeType=inode/directory;application/x-directory;
+StartupNotify=true
+Keywords=file;manager;terminal;
+NoDisplay=true
