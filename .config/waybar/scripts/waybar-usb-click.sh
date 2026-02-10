@@ -9,6 +9,7 @@ DEV_NAME=$(lsblk -ln -o NAME,RM,TYPE,SIZE,LABEL | \
 
 # 使用字符串检查代替整数对比，防止脚本报错
 if [ -z "$DEV_NAME" ] || [ "$DEV_NAME" == "null" ]; then
+    notify-send -u normal "USB 设备" "未检测到USB设备"
     exit 0
 fi
 
@@ -23,8 +24,7 @@ case "$1" in
             xdg-open "$MOUNT_PATH"
         else
             # 状态：未挂载 -> 弹出提示，不进行挂载操作
-            notify-send -u normal "USB 设备" "设备尚未挂载，请先挂载后再打开。" \
-                --icon=drive-removable-media
+            notify-send -u normal "USB 设备" "设备已弹出，请挂载后打开。"
         fi
         ;;
     "unmount")
