@@ -1,0 +1,74 @@
+# Rime user dictionary
+#@/db_name	rime_ice
+#@/db_type	userdb
+#@/rime_version	1.16.1
+#@/tick	96
+#@/user_id	c5bf9ae0-c46f-4be5-b156-11dcbfa41ea2
+an niu 	按钮	c=1 d=0.965605 t=96
+an zhuo 	安卓	c=1 d=0.798516 t=96
+ban ben 	版本	c=1 d=0.904837 t=96
+bu ru 	不如	c=1 d=0.806541 t=96
+cha jian 	插件	c=1 d=1 t=96
+chong xin 	重新	c=1 d=0.951229 t=96
+chu le 	除了	c=1 d=0.937067 t=96
+de 	的	c=5 d=3.88599 t=96
+dian ji 	点击	c=1 d=0.891366 t=96
+dou 	都	c=1 d=0.927743 t=96
+er bu shi 	而不是	c=1 d=0.99005 t=96
+er qie hai 	而且还	c=1 d=0.860708 t=96
+ge ge 	各个	c=1 d=0.918512 t=96
+gei wo 	给我	c=1 d=0.891366 t=96
+hai shi 	还是	c=1 d=0.847894 t=96
+hao xiang 	好像	c=1 d=0.831104 t=96
+he 	和	c=4 d=3.61004 t=96
+hou 	后	c=3 d=2.84131 t=96
+jian ming 	简明	c=1 d=0.995012 t=96
+jiao cheng 	教程	c=1 d=1 t=96
+jie ya 	解压	c=1 d=0.882497 t=96
+jin ru 	进入	c=1 d=0.852144 t=96
+jin xing 	进行	c=1 d=0.882497 t=96
+jiu shi 	就是	c=1 d=0.83527 t=96
+ke yi 	可以	c=1 d=0.985112 t=96
+kuang 	框	c=1 d=0.909373 t=96
+le 	了	c=1 d=1 t=96
+ming ling 	命令	c=1 d=0.97531 t=96
+na niu 	那牛	c=1 d=0.960789 t=96
+nei he 	内核	c=1 d=0.900325 t=96
+pei zhi 	配置	c=2 d=1.79741 t=96
+qi dong 	启动	c=1 d=0.955997 t=96
+qia zhu 	卡住	c=1 d=0.826959 t=96
+shen me 	什么	c=2 d=1.72586 t=96
+shi 	时	c=1 d=0.970446 t=96
+shi yong 	使用	c=3 d=2.59149 t=96
+shou duan 	手段	c=1 d=0.970446 t=96
+shuang 	双	c=1 d=0.810584 t=96
+tiao shi 	调试	c=6 d=5.18356 t=96
+ting zhi 	停止	c=1 d=0.941765 t=96
+wan 	玩	c=1 d=0.869358 t=96
+wei shen me 	为什么	c=1 d=0.831104 t=96
+wen dang 	文档	c=1 d=0.99005 t=96
+wen jian 	文件	c=1 d=0.88692 t=96
+wo 	我	c=1 d=0.937067 t=96
+wu fa 	无法	c=4 d=3.48155 t=96
+xi tong 	系统	c=1 d=0.814647 t=96
+xia 	下	c=1 d=0.909373 t=96
+xie yi ge 	写一个	c=1 d=0.895834 t=96
+xu ni ji 	虚拟机	c=1 d=0.802519 t=96
+xuan xiang 	选项	c=1 d=0.923116 t=96
+xuan ze 	选择	c=1 d=0.904837 t=96
+yao 	要	c=2 d=1.78123 t=96
+ye 	也	c=1 d=0.873716 t=96
+yi kai shi 	一开始	c=1 d=0.83527 t=96
+yong 	用	c=2 d=1.63819 t=96
+yong bu liao 	用不了	c=1 d=0.932394 t=96
+you 	有	c=1 d=0.818731 t=96
+you xi 	游戏	c=1 d=0.878095 t=96
+yuan cheng 	远程	c=1 d=0.822835 t=96
+yun xing 	运行	c=4 d=3.35879 t=96
+zai 	在	c=2 d=1.7444 t=96
+zhe 	这	c=1 d=0.860708 t=96
+zheng ce 	政策	c=1 d=0.97531 t=96
+zheng chang 	正常	c=1 d=0.980199 t=96
+zhi jie 	直接	c=1 d=0.847894 t=96
+zhong wen 	中文	c=2 d=1.95101 t=96
+zhuo mian 	桌面	c=1 d=0.826959 t=96

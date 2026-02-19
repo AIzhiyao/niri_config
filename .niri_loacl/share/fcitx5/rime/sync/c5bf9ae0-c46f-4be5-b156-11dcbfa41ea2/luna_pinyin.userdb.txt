@@ -1,0 +1,11 @@
+# Rime user dictionary
+#@/db_name	luna_pinyin
+#@/db_type	userdb
+#@/rime_version	1.16.1
+#@/tick	5
+#@/user_id	c5bf9ae0-c46f-4be5-b156-11dcbfa41ea2
+cheng du 	程度	c=1 d=0.980199 t=5
+fei mao 	肥貓	c=1 d=0.985112 t=5
+jian ming 	簡明	c=1 d=0.995012 t=5
+yi nan 	疑難	c=1 d=1 t=5
+yun 	云	c=1 d=0.99005 t=5
