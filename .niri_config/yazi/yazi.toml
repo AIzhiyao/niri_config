@@ -1,5 +1,6 @@
 # ~/.config/yazi/yazi.toml
 [mgr]
+# 界面三栏的比例
 ratio = [2, 3, 4]
 
 #*************文件打开方式*************#
@@ -19,10 +20,15 @@ xdg-open = [
     { run = "xdg-open %s", desc = "用系统默认应用打开" }
 ]
 
+# 解压缩
+extract = [
+    { run = "7z x %s", orphan = true, desc = "解压压缩包" }
+]
+
 # 2. 定义打开规则（哪个文件用哪个工具）
 [open]
 rules = [
-    # ========== 明确禁止打开的二进制文件类型 ==========
+# ================== 明确禁止打开的二进制文件类型 ==================
     # 备份文件
     { url = "*.backup", use = "no_open" },
     { url = "*.bak", use = "no_open" },
@@ -30,7 +36,7 @@ rules = [
     # 可执行文件
     { url = "*.exe", use = "no_open" },
     { url = "*.app", use = "no_open" },
-    
+
     # 系统二进制文件
     { url = "*.bin", use = "no_open" },
     { url = "*.so", use = "no_open" },
@@ -50,6 +56,36 @@ rules = [
     # 通用二进制/数据文件
     { url = "*.dat", use = "no_open" },
 
-    { mime = "*", use = "xdg-open" },
+# ================== 解压 ==================
+    # zip
+    { url = "*.zip", use = "extract" },
+
+    # tar 系列
+    { url = "*.tar", use = "extract" },
+    { url = "*.tar.gz", use = "extract" },
+    { url = "*.tgz", use = "extract" },
+    { url = "*.tar.bz2", use = "extract" },
+    { url = "*.tbz", use = "extract" },
+    { url = "*.tbz2", use = "extract" },
+    { url = "*.tar.xz", use = "extract" },
+    { url = "*.txz", use = "extract" },
+    { url = "*.tar.zst", use = "extract" },
+    { url = "*.tzst", use = "extract" },
+
+    # 单层压缩
+    { url = "*.gz", use = "extract" },
+    { url = "*.bz2", use = "extract" },
+    { url = "*.xz", use = "extract" },
+    { url = "*.zst", use = "extract" },
+
+    # 7z / rar
+    { url = "*.7z", use = "extract" },
+    { url = "*.rar", use = "extract" },
+
+    { url = "*.lz", use = "extract" },
+    { url = "*.lzma", use = "extract" },
+
+# ================== 其他通用 ==================
+    { mime = "*", use = "xdg-open" }
 ] 
 
