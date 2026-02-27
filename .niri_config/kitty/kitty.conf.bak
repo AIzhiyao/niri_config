@@ -2996,12 +2996,12 @@ include current-theme.conf
 
 
 # BEGIN_KITTY_FONTS
-font_family      family='Maple Mono NF CN' features='cv01=1 +ss03'
+font_family      family='Maple Mono NF CN' features=cv01=1
 bold_font        family='Maple Mono NF CN' postscript_name=MapleMono-NF-CN-Bold features=calt
 italic_font      auto
 bold_italic_font auto
+font_size	 10
 # END_KITTY_FONTS
-font_size	 18
 
 # 窗口样式
 hide_window_decorations titlebar-only

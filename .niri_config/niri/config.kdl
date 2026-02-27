@@ -8,6 +8,7 @@ environment {
     XMODIFIERS "@im=fcitx"
     GTK_IM_MODULE "fcitx"
     QT_IM_MODULE "fcitx"
+    _JAVA_AWT_WM_NONREPARENTING "1"
 }
 
 prefer-no-csd
@@ -129,8 +130,19 @@ input {
 }
 
 
+output "DP-3" {
+    mode "2560x1440@119.998"
 
-output "HDMI-A-1" {
+    scale 1.25
+
+
+    position x=0 y=0
+    focus-at-startup
+}
+
+
+
+/-output "HDMI-A-1" {
     mode "1920x1080@100.000"
 
     scale 1
@@ -309,7 +321,7 @@ layout {
 spawn-at-startup "/usr/lib/mate-polkit/polkit-mate-authentication-agent-1"
 // 每当 U 盘状态变动，udiskie 就会执行 pkill 给 Waybar 发信号
 spawn-at-startup "udiskie"
-spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
+spawn-sh-at-startup "pkill -x wl-paste; rm -f ~/.cache/cliphist/db; wl-paste --watch cliphist store"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"

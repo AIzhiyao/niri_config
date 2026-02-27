@@ -16,4 +16,4 @@
 # loupe、papers
 # mihomo-party-bin/flclash(fedora不与qq冲突)
 # fcitx5皮肤 fcitx5-material-color
-# gsettings set org.gnome.desktop.interface font-name "LXGW WenKai 11"
+# gsettings set org.gnome.desktop.interface font-name 'LXGW WenKai 11'
