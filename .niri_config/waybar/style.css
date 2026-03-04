@@ -15,13 +15,8 @@ window#waybar {
 
 #workspaces {
     border-radius: 10px;
-    margin-top: 8px;
-    margin-bottom: 8px;
-    margin-right: 5px;
-    padding-top: 6px;
-    padding-bottom: 6px;
-    padding-right:10px;
-    padding-left: 10px;
+    margin: 8px 0;
+    padding: 6px 10px;
 }
 
 #workspaces {
@@ -38,8 +33,7 @@ window#waybar {
     text-shadow: none;
     padding: 0px;
     border-radius: 9px;
-    padding-left: 4px;
-    padding-right: 4px;
+    padding: 0 4px;
     transition: all 0.5s cubic-bezier(.55,-0.68,.48,1.682);
     min-width: 20px; 
 }
@@ -76,10 +70,8 @@ window#waybar {
 #custom-lockscreen,
 #custom-logout,
 #custom-reboot,
-#custom-system,
 #custom-shutdown,
-/* #custom-usb, */
-#custom-separator {
+#custom-system {
     padding: 5px 8px;
     border-style: solid;
     background-color: rgba(128, 128, 128, 0.678);
@@ -93,6 +85,8 @@ window#waybar {
   */
 #bluetooth {
     color: #4aa8ff;
+    margin-left: 10px;
+    border-radius: 10px 0 0 10px;
 }
 
 #clock {
@@ -151,7 +145,6 @@ window#waybar {
     color: #42ff52;
 }
 
-
 #temperature {
     color: #ffffff;
     border-radius: 10px 0 0 10px;
@@ -163,7 +156,6 @@ window#waybar {
 #tray {
     margin: 8px 5px;
     border-radius: 10px;
-    background-color: rgba(116, 115, 115, 0.678); 
 }
 
 /*剪切板功能*/
@@ -176,25 +168,17 @@ window#waybar {
     color: #ace0ff
 }
 
-
-/*分隔符*/
-#custom-separator {
-    padding: 5px 0;
-    color: #8a8a8a;
-}
-
-
 /*arch logo模块*/
 #custom-system {
     padding: 5px 15px 5px 10px;
-    border-radius: 10px 0 0 10px;
+    border-radius: 10px;
     margin-left: 10px;
+    background-color: rgb(199, 58, 58);
     color: #ffffff;
 }
 #custom-system:hover {
     color: #52a4e7;
 }
-
 
 /*电源模块*/
 #custom-shutdown {

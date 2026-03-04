@@ -5,7 +5,6 @@
   "margin": "0 0 0 0",
   "modules-left": [
     "custom/system",
-    "custom/separator",
     "bluetooth",
     "custom/clipboard",
     "niri/workspaces", 

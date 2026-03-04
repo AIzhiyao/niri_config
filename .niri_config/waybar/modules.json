@@ -162,10 +162,6 @@
     "on-click": "niri msg action quit",
     "tooltip": false
   },
-  "custom/separator": {
-    "format": "⸽",
-    "tooltip": false
-  },
   "custom/clipboard": {
     "format": "󰅌",
     "tooltip": false,

@@ -8,11 +8,6 @@ x-scheme-handler/mihomo=mihomo-party.desktop
 #pdf文件
 application/pdf=org.gnome.Papers.desktop
 
-# 文件查看器
-inode/directory=yazi-fileview.desktop
-application/x-directory=yazi-fileview.desktop
-
-
 # 视频文件
 video/mp4=mpv.desktop
 video/x-matroska=mpv.desktop
