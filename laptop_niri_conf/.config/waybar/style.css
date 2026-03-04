@@ -1,0 +1,230 @@
+* {
+    border: 0;
+    font-family: "JetBrainsMono Nerd Font";
+    font-weight: 500;
+    font-size: 16px;
+
+    transition-property: background;
+    transition-duration: 0.2s;
+}
+
+window#waybar {
+    border: 0px solid rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0);
+}
+
+#workspaces {
+    border-radius: 10px;
+    margin: 8px 0 8px 5px;
+    padding: 6px 10px;
+    background: rgba(116, 115, 115, 0.678);
+}
+
+#workspaces button label {
+    color: #ffffff;
+}
+
+#workspaces button {
+    background: transparent;
+    box-shadow: none; 
+    text-shadow: none;
+    border-radius: 9px;
+    padding: 0 4px;
+    transition: all 0.5s cubic-bezier(.55,-0.68,.48,1.682);
+    min-width: 20px; 
+}
+#workspaces button:hover {
+    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+}
+
+
+#workspaces button.active {
+    background: rgba(82,164,231, 0.521); 
+    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+}
+
+.modules-left > widget:first-child > * {
+    margin-left: 6px;
+}
+
+.modules-right > widget:last-child > * {
+    margin-right: 6px;
+}
+
+#bluetooth,
+#backlight,
+#battery,
+#clock,
+#cpu,
+#mode,
+#memory,
+#network#bandwidth,
+#network,
+#pulseaudio,
+#power-profiles-daemon,
+#temperature,
+#tray,
+#custom-clipboard,
+#custom-hibernate,
+#custom-logout,
+#custom-reboot,
+#custom-system,
+#custom-shutdown,
+#custom-separator {
+    padding: 5px 8px;
+    border-style: solid;
+    background-color: rgba(128, 128, 128, 0.678);
+    opacity: 1;
+    margin: 8px 0;
+}
+
+/** -----------------------------------------------------------------------------
+  * Module styles
+  * -----------------------------------------------------------------------------
+  */
+#bluetooth {
+    color: #4aa8ff;
+}
+
+#backlight {
+    color: #ffffff;
+}
+
+#backlight.Bright {
+    color: #ff9058;
+}
+
+#battery {
+    color: #66ec68;
+    border-radius: 10px 0 0 10px;
+    margin-left: 10px;
+}
+
+#battery.warning {
+    color: orange;
+}
+
+#battery.critical {
+    color: red;
+}
+
+#clock {
+    color: #b3f0ff;
+    border-radius: 10px;
+    margin: 8px 10px;
+}
+
+#cpu {
+    color: #fab1dc;
+}
+
+#cpu #cpu-icon {
+    color: #fab1dc;
+}
+
+#memory {
+    color: #ccb1ff;
+    margin-right: 5px;
+    border-radius: 0 10px 10px 0;
+    padding: 5px 12px;
+}
+
+#network.disabled {
+    color: #bf616a;
+}
+
+#network {
+    color: #a6da95;
+    border-radius: 10px;
+    margin-right: 5px;
+}
+
+#network.disconnected {
+    color: #bf616a;
+}
+
+#pulseaudio {
+    color: #ffffff;
+    border-radius: 10px 10px;
+}
+
+#pulseaudio.muted {
+    color: #3b4252;
+}
+
+#power-profiles-daemon {
+    color: #ffffff;
+}
+
+#power-profiles-daemon.performance {
+    color: #fdff76;
+}
+
+#power-profiles-daemon.power-saver {
+    color: #42ff52;
+}
+
+#temperature {
+    color: #ffffff;
+    border-radius: 10px 0 0 10px;
+}
+#temperature.critical {
+    color: #d12222;
+}
+
+#tray {
+    margin: 8px 5px;
+    border-radius: 10px;
+}
+
+/*剪切板功能*/
+#custom-clipboard {
+    color: #ffffff;
+    border-radius: 0 10px 10px 0;
+}
+#custom-clipboard:hover {
+    color: #ace0ff
+}
+
+/*arch logo模块*/
+#custom-system {
+    background: rgb(184, 50, 50);
+    padding: 5px 15px 5px 10px;
+    border-radius: 10px;
+    margin-left: 10px;
+    color: #ffffff;
+}
+#custom-system:hover {
+    color: #52a4e7;
+}
+
+/*电源模块*/
+#custom-shutdown {
+    color: #ffffff;
+    /* background-color: #0e939c; */
+    background: #435557;
+    padding: 5px 12px;
+
+    border-radius: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+#custom-reboot {
+    color: #ffffff;
+    background: #435557;
+    padding: 5px 10px;
+
+    border-radius: 10px 0 0 10px;
+    margin-left: 10px;
+}
+#custom-hibernate {
+    color: #ffffff;
+    background: #435557;
+    padding: 5px 10px;
+    border-radius: 0 10px 10px 0;
+}
+#custom-logout {
+    color: #ffffff;
+    background: #435557;
+    padding: 5px 10px;
+}
