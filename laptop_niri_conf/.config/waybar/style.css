@@ -61,11 +61,10 @@ window#waybar {
 #network#bandwidth,
 #network,
 #pulseaudio,
-#power-profiles-daemon,
 #temperature,
 #tray,
 #custom-clipboard,
-#custom-hibernate,
+#custom-suspend,
 #custom-logout,
 #custom-reboot,
 #custom-system,
@@ -152,18 +151,6 @@ window#waybar {
     color: #3b4252;
 }
 
-#power-profiles-daemon {
-    color: #ffffff;
-}
-
-#power-profiles-daemon.performance {
-    color: #fdff76;
-}
-
-#power-profiles-daemon.power-saver {
-    color: #42ff52;
-}
-
 #temperature {
     color: #ffffff;
     border-radius: 10px 0 0 10px;
@@ -201,7 +188,7 @@ window#waybar {
 /*电源模块*/
 #custom-shutdown {
     color: #ffffff;
-    /* background-color: #0e939c; */
+    font-size: 20px;
     background: #435557;
     padding: 5px 12px;
 
@@ -211,20 +198,23 @@ window#waybar {
 }
 #custom-reboot {
     color: #ffffff;
+    font-size: 20px;
     background: #435557;
     padding: 5px 10px;
 
     border-radius: 10px 0 0 10px;
     margin-left: 10px;
 }
-#custom-hibernate {
+#custom-suspend {
     color: #ffffff;
+    font-size: 20px;
     background: #435557;
     padding: 5px 10px;
     border-radius: 0 10px 10px 0;
 }
 #custom-logout {
     color: #ffffff;
+    font-size: 20px;
     background: #435557;
     padding: 5px 10px;
 }

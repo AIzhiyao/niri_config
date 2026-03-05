@@ -1,7 +1,7 @@
 {
   "layer": "top",
   "position": "bottom",
-  "height": 52,
+  "height": 53,
   "margin": "0 0 0 0",
   "modules-left": [
     "custom/system",
@@ -16,7 +16,6 @@
   "modules-right": [
     "temperature",
     "cpu",
-    "power-profiles-daemon",
     "memory",
     "network",
     "pulseaudio",
