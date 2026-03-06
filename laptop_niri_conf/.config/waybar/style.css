@@ -102,7 +102,6 @@ window#waybar {
 #battery.warning {
     color: orange;
 }
-
 #battery.critical {
     color: red;
 }
@@ -116,7 +115,6 @@ window#waybar {
 #cpu {
     color: #fab1dc;
 }
-
 #cpu #cpu-icon {
     color: #fab1dc;
 }
@@ -125,11 +123,6 @@ window#waybar {
     color: #ccb1ff;
     margin-right: 5px;
     border-radius: 0 10px 10px 0;
-    padding: 5px 12px;
-}
-
-#network.disabled {
-    color: #bf616a;
 }
 
 #network {
@@ -137,7 +130,9 @@ window#waybar {
     border-radius: 10px;
     margin-right: 5px;
 }
-
+#network.disabled {
+    color: #bf616a;
+}
 #network.disconnected {
     color: #bf616a;
 }
@@ -146,7 +141,6 @@ window#waybar {
     color: #ffffff;
     border-radius: 10px 10px;
 }
-
 #pulseaudio.muted {
     color: #3b4252;
 }
